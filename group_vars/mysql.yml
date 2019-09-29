@@ -1,1 +1,1 @@
-cloud: none
+cloud: azure   # {none, azure}

@@ -2,7 +2,7 @@
 localhost
 
 [mysql] # 非root用户名
-168.62.48.91 ansible_ssh_user=websoft9 ansible_ssh_pass=Qwer12345678 ansible_sudo_pass=Qwer12345678
+13.82.110.186 ansible_ssh_user=websoft9 ansible_ssh_pass=Qwerty123456 ansible_sudo_pass=Qwerty123456
 
 # ansible_ssh_user
 # ansible_ssh_pass
