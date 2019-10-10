@@ -1,1 +1,1 @@
-cloud: azure   # {none, azure}
+cloud: azure   # {none, azure,aws}

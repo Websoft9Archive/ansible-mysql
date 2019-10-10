@@ -45,8 +45,8 @@
   become: yes
   become_method: sudo
   roles:
-    # - { role: common , tags: "common"}  
-    # - {role: mysql, tags: "mysql"}
+    - { role: common , tags: "common"}  
+    - {role: mysql, tags: "mysql"}
     - {role: random, tags: "random"}
     - {role: docker, tags: "docker"}
     - {role: docker_phpmyadmin, tags: "docker_phpmyadmin"}
