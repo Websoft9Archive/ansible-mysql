@@ -1,4 +1,4 @@
-# 服务器前置任务(ubuntu使用)
+# 服务器前置任务
 - name: Pre_mysql
   hosts: all
   become: yes
@@ -16,7 +16,7 @@
   gather_facts: True
   vars_prompt:
     - name: 'mysql_version_number'
-      prompt: "\nPlease choose the number for MySQL version \n
+      prompt: "\nPlease choose the number for MySQL version [ 1/2/3/4] \n
       1: MySQL5.5(only for CentOS)\n
       2: MySQL5.6(only for CentOS)\n
       3: MySQL5.7\n
