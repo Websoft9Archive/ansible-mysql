@@ -16,7 +16,7 @@
   gather_facts: True
   vars_prompt:
     - name: 'mysql_version_number'
-      prompt: "Please choose the number for MySQL version \n
+      prompt: "\nPlease choose the number for MySQL version \n
       1: MySQL5.5(only for CentOS)\n
       2: MySQL5.6(only for CentOS)\n
       3: MySQL5.7\n
