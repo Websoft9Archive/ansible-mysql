@@ -1,86 +1,140 @@
----
-sidebarDepth: 3
----
-
 # MySQL速学
 
-## 操作系统视角看MySQL
+## MySQL 使用入口
 
-MySQL是用来运行应用程序的，而应用程序必须在操作系统上运行，这个基本原理是无法改变的。因此一个MySQL实例（Container）是包含一个简易的Linux或Windows操作系统。   
-> 可以说，Container=运行时操作系统+应用软件（含依赖组件）。如果从操作系统视角看Container就更加便于理解Container。
+镜像安装完成后，MySQL就可以使用了。使用MySQL有两种方式方式
 
-## 网络和端口
+### 方式一 图形工具
 
-容器不是用来看的，是需要被外界访问或其他应用程序调用的，理解容器的网络机制就很有必要的。
+镜像提供了可视化的界面：如MySQL-Front，phpMyAdmin。也可以开启远程链接后，在本地使用Navicat访问
 
-### 内网地址
+### 方式二 命令方式
 
-对于MySQL系统来说，默认有一个容器路由功能，简单的说，MySQL会给每个部署好的Container生成一个内网IP地址。例如，MySQL下运行了容器，MySQL就自动分配了3个内网地址：
-```
-容器1 172.18.0.1
-容器2 172.18.0.2
-容器3 172.18.0.23
-```
-对于其中任何Container来说，都可以通过IP地址作为访问通道
+使用Putty远程登录到Linux服务器（或远程桌面登录到Windows-CMD窗口），运行命令
 
-### 端口
-
-每个Container，都可以映射到服务器的一个端口上，以便于外部访问这个Container。
-例如：172.18.0.1 上运行了MySQL，且MySQL本身开启了外部访问。这个时候，如何通过服务器的IP地址来访问这个MySQL呢？
-1. 首先，将容器1的做一个端口映射，加入映射到都服务器的3306端口
-
-2. 然后，通过 服务器IP:3306 就可以访问MySQL
-
-问题：Container中的应用为什么有端口号？Container是带最简的操作系统的，有操作系统就一定会通过端口访问程序
-
-## 镜像
-
-对于MySQL来说，镜像（Image）就是一个打包好了的文件包，这个文件包可以直接在MySQL中部署，部署之后就产生了一个容器（Container）
-
-> 例如：MySQL镜像=Linux操作系统+MySQL软件+可设置的配置参数
-
-故，一个镜像在部署的时候，是需要用户给可配置的参数赋值的。那这些参数在哪里？怎么设置？这个需要查看MySQL镜像对应的技术文档。
-
-### 镜像是怎么制作出来的？
-
-简单的说将MySQLFile通过build命令跑一下，就生成了一个镜像
-
-### 镜像是一个单独的大文件还是一序列文件集合？
-
-镜像简单理解是一个文件夹，但也可以制作成压缩包
-
-* docker save是将一个镜像导出成一个tarball文件，对应的导入命令是docker load，将该文件导入成一个镜像。
-* docker export是将一个容器导出成一个tarball文件，对应的导入命令时docker import，将该文件导入成一个镜像（注意不是容器）。
-
-> 从功能上讲，docker export相当于commit ＋save，先将容器commit成镜像，再save成文件。
-
-### 镜像仓库
-
-顾名思义，镜像仓库就是大量镜像集中存放的地方。最大的镜像仓库是MySQL公司的MySQLhub，另外各个MySQL主机提供商（阿里云、华为云等）也会提供镜像仓库服务，供客户存放自己的私有镜像。
-
-## 数据固定存储 
-
-由于容器是运行时，那么用户一定会思考一个问题：“容器运行过程产生了一些需要长期保存的数据，一旦停止或销毁，所有产生的数据就会消失。怎么办？” 以运行WordPress为例，WordPress的wp-content是需要保留数据库的文件夹，如果在容器下运行，如何保存呢？
-
-其实MySQL考虑这种场景，MySQL可以给容器“挂载”一个固定的外部存储空间，这个存储空间是服务器操作系统来管理的。
-
-以WordPress为例，MySQL处理长期数据保存的机制如下：
-
-1. 容器运行之前，给wp-content映射到一个MySQL之外的固定存储路径
-2. 运行容器，wp-content的数据就会保存下来
+~~~
+#假设初始密码是：123456
+mysql -uroot –p123456
+~~~
 
 ## 常见命令
 
-下面是使用MySQL可能需要用到的常见命令
+### 创建/删除/查看数据库
 
-~~~
-systemctl start/stop docker     运行/停止 docker 服务
-systemctl enable docker         使 docker 开机自启
-docker pull                     从镜像库拉取容器镜像
-docker ps                       查看正在运行的容器列表（可以看到容器ID，所映射的端口号等等）
-docker ps -a                    查看所有的容器（不管是否运行都能看到）
-docker start/stop CONTAINER ID  开始/停止容器（CONTAINER ID 是容器的ID）            
-docker rm CONTAINER ID          删除容器
-docker kill CONTAINER ID        直接关闭容器
-docker images  # 查询已下载镜像
-~~~
+创建一个数据库
+
+mysql -uroot  –p密码                                        #进入数据库控制台
+
+MySQL [(none)]> create database 数据库名称;     #特别注意有分号
+
+MySQL [(none)]>  show  databases;                      #查看数据库
+
+MySQL [(none)]>  exit;                                 #退出数据库控制台，特别注意有分号
+
+删除一个数据库
+
+MySQL [(none)]> drop database 数据库名称;     #删除数据库
+
+MySQL [(none)]> exit;                                     #退出数据库控制台，特别注意有分号
+
+查看数据库: show databases;           #如下图中3个数据库是默认数据库，不可删除
+
+![websoft9-mysql](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/mysql_databases_default.png)
+
+选择数据库: use dbname;
+
+### 表的操作
+
+显示库下面的表
+show tables;
+
+查看表的结构:
+desc tableName;
+
+查看表的创建过程:
+show create table tableName;
+
+创建表:
+create table tbName ( 列名称1　列类型　[列参数]　[not null default ], ….列2… …. 列名称N　列类型　[列参数]　[not null default ] )engine myisam/innodb charset utf8/gbk
+
+例子:
+create table user ( id int auto_increment, name varchar(20) not null default ”, age tinyint unsigned not null default 0, index id (id) )engine=innodb charset=utf8;
+注:innodb是表引擎,也可以是myisam或其他,但最常用的是myisam和innodb,
+charset 常用的有utf8,gbk;
+
+修改表
+1.修改表之增加列:
+alter table tbName add 列名称１　列类型　[列参数]　[not null default ]　#(add之后的旧列名之后的语法和创建表时的列声明一样)
+
+2.修改表之修改列
+alter table tbName change 旧列名 新列名 列类型　[列参数]　[not null default ]
+(注:旧列名之后的语法和创建表时的列声明一样)
+
+3.修改表之减少列:
+alter table tbName drop 列名称;
+
+4.修改表之增加主键
+alter table tbName add primary key(主键所在列名);
+例:alter table goods add primary key(id)
+该例是把主键建立在id列上
+
+5.修改表之删除主键
+alter table tbName　drop primary key;
+
+6.修改表之增加索引
+alter table tbName add [unique|fulltext] index 索引名(列名);
+
+7.修改表之删除索引
+alter table tbName drop index 索引名;
+
+8.清空表的数据
+truncate tableName;
+
+### 表数据操作
+
+1.插入数据 
+	insert into 表名(col1,col2,……) values(val1,val2……); -- 插入指定列
+	insert into 表名 values (,,,,); -- 插入所有列
+	insert into 表名 values	-- 一次插入多行 
+	(val1,val2……),
+	(val1,val2……),
+	(val1,val2……);
+
+2.修改数据
+	update tablename 
+	set 
+	col1=newval1,  
+	col2=newval2,
+	...
+	...
+	colN=newvalN
+	where 条件;
+
+3.删除数据    delete from tablenaeme where 条件;
+
+4.select查询
+
+  （1）  条件查询   where  a. 条件表达式的意义，表达式为真，则该行取出
+			   b.  比较运算符  = ，!=， =
+                           c.  like , not like ('%'匹配任意多个字符,'_'匹配任意单个字符) 
+				in , not in , between and
+                           d. is null , is not null			
+  （2）  分组       group by 
+			一般要配合5个聚合函数使用:max,min,sum,avg,count
+  （3）  筛选       having
+  （4）  排序       order by
+  （5）  限制       limit
+
+5.连接查询
+5.1 左连接
+	.. left join .. on
+	table A left join table B on tableA.col1 = tableB.col2 ; 
+  例句:
+  select 列名 from table A left join table B on tableA.col1 = tableB.col2
+
+5.2 右链接: right join
+
+5.3 内连接: inner join 左右连接都是以在左边的表的数据为准,沿着左表查右表. 内连接是以两张表都有的共同部分数据为准,也就是左右连接的数据之交集. 7 子查询 where 型子查询:内层sql的返回值在where后作为条件表达式的一部分 例句: select * from tableA where colA = (select colB from tableB where ...); from 型子查询:内层sql查询结果,作为一张表,供外层的sql语句再次查询 例句:select * from (select * from ...) as tableName where ....
+
+## 关于 test 数据库
+在MySQL5.7 版本之前，安装 MySQL 时会默认包含一个 test 数据库，该数据库仅仅用来测试使用，但是所有能连接到MySQL的用户，几乎都拥有test库的所有权限，因此存在一定的安全隐患。从信息安全角度考虑，如果您发现您使用的 MySQL 中有该 test 数据库，请**务必删除**。

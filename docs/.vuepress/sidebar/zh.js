@@ -17,7 +17,13 @@ module.exports = [
     collapsable: false,
     children: [
       '/zh/solution-study',
-      '/zh/solution-portainer',
+      '/zh/solution-password',
+      '/zh/solution-remote',
+      '/zh/solution-phpmyadmin',
+      '/zh/solution-jspmyadmin',
+      '/zh/solution-navicat',
+      '/zh/solution-workbench',
+      '/zh/solution-mysqlfront',
       '/zh/solution-backup',
       '/zh/solution-upgrade',
       '/zh/solution-more',
@@ -30,6 +36,7 @@ module.exports = [
     children: [
       '/zh/admin-services',
       ['https://support.websoft9.com/docs/linux/zh/admin-practices.html','Linux'],
+      ['https://support.websoft9.com/docs/windows/zh/admin-practices.html','Windows'],
     ]
   },
   
@@ -38,8 +45,7 @@ module.exports = [
     collapsable: false,
     children: [
       '/zh/else-faq',
-      '/zh/else-troubleshooting',
-      '/zh/else-reference.md',      
+      '/zh/else-troubleshooting',     
     ]
   },
   
