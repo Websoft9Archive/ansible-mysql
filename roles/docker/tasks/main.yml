@@ -38,6 +38,10 @@
         
   when: ansible_distribution == 'Ubuntu'
 
+- name: pip requirements
+  pip:
+    name: [docker]
+
 - name: Started Docker
   service:
     name: docker 

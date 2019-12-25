@@ -24,7 +24,7 @@
     name: root
     host: '%'
     password: "{{mysql_pass.stdout}}"
-    priv: '*.*:ALL'
+    priv: '*.*:ALL,GRANT'
 
 - name: Drop localhost User
   mysql_user:

@@ -1,0 +1,27 @@
+- src: https://github.com/websoft9dev/role_common
+  version: master
+  name: common
+
+- src: https://github.com/websoft9dev/role_cloud
+  version: master
+  name: cloud
+
+- src: https://github.com/websoft9dev/role_mysql
+  version: master
+  name: mysql
+
+- src: https://github.com/websoft9dev/role_initpassword
+  version: master
+  name: initpassword
+
+- src: https://github.com/websoft9dev/role_docker
+  version: master
+  name: docker
+
+- src: https://github.com/websoft9dev/role_docker_phpmyadmin
+  version: master
+  name: docker_phpmyadmin
+
+- src: https://github.com/websoft9dev/role_end
+  version: master
+  name: end

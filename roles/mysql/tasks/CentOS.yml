@@ -7,9 +7,9 @@
     - {src: mysql-community.repo.jinja2,dest: /etc/yum.repos.d/mysql-community.repo}
     - {src: RPM-GPG-KEY-mysql,dest: /etc/pki/rpm-gpg/}
 
-- name: Install MySQL{{ mysqlver }}
+- name: Install MySQL{{ mysql_version }}
   yum: 
-    name: [mysql-community-server,MySQL-python]
+    name: [mysql-community-server,mysql-devel,MySQL-python]
 
 - name: Create Databases Directory
   file:
@@ -18,10 +18,10 @@
     owner: mysql
     group: mysql
   
-- name: Copy MySQL{{mysqlver}} Configuration
+- name: Copy MySQL{{mysql_version}} Configuration
   template: src=my.cnf.jinja2 dest=/etc/my.cnf
 
-- name: Restart MySQL{{mysqlver}}
+- name: Restart MySQL{{mysql_version}}
   service:
     name: mysqld
     state: restarted
@@ -38,50 +38,50 @@
       regexp: '#validate_password=OFF' 
       line: 'validate_password=OFF'
 
-  - name: Restart MySQL{{mysqlver}} Service
+  - name: Restart MySQL{{mysql_version}} Service
     service: name=mysqld state=restarted enabled=yes
 
   - name: Change MySQL57+ root user password 
-    shell: mysqladmin -u root --password="{{ mysql_root_temp_password.stdout }}" password "{{mysql_password}}"
+    shell: mysqladmin -u root --password="{{ mysql_root_temp_password.stdout }}" password "{{mysql_root_password | default('Websoft9',true)}}"
 
-  when: (mysqlver == 5.7) or (mysqlver == '5.7') or (mysqlver == 8.0) or (mysqlver == '8.0')
+  when: (mysql_version == 5.7) or (mysql_version == '5.7') or (mysql_version == 8.0) or (mysql_version == '8.0')
 
-- name: Change MySQL{{ mysqlver }} root user password 
+- name: Change MySQL{{ mysql_version }} root user password 
   mysql_user: 
     name: root 
     host: "{{ item }}" 
-    password: "{{mysql_password}}"
+    password: "{{mysql_root_password | default('Websoft9',true)}}"
   with_items:
     - 127.0.0.1
     - ::1
     - localhost
-  when: (mysqlver == 5.5) or (mysqlver == '5.5') or (mysqlver == 5.6) or (mysqlver == '5.6')
+  when: (mysql_version == 5.5) or (mysql_version == '5.5') or (mysql_version == 5.6) or (mysql_version == '5.6')
 
 
 - name: Removes all anyelse user accounts
   mysql_user:
     login_user: root
-    login_password: "{{mysql_password}}"
+    login_password: "{{mysql_root_password | default('Websoft9',true)}}"
     name: ''
     host_all: yes
     state: absent
 
 - name: Remove hostname user accounts
-  mysql_user: login_user=root login_password={{mysql_password}} name='root' host={{ ansible_nodename }} state=absent
+  mysql_user: login_user=root login_password={{mysql_root_password | default('Websoft9',true)}} name='root' host={{ ansible_nodename }} state=absent
 
 
 - name: Removes test Databases
   mysql_db:
     login_user: root
-    login_password: "{{mysql_password}}"
+    login_password: "{{mysql_root_password | default('Websoft9',true)}}"
     name: test
     state: absent
 
 - name: Removing privileges on test database
-  command: mysql -uroot -p{{mysql_password}} -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'"
+  command: mysql -uroot -p{{mysql_root_password | default('Websoft9',true)}} -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%'"
 
 - name: FLUSH PRIVILEGES
-  command: mysql -uroot -p{{mysql_password}} -e "FLUSH PRIVILEGES"
+  command: mysql -uroot -p{{mysql_root_password | default('Websoft9',true)}} -e "FLUSH PRIVILEGES"
 
 
 - name: Create a MySQL  symbolic link
@@ -92,3 +92,4 @@
   with_items:
     - {src: '/etc/my.cnf',dest: /data/config/my.cnf}  
     - {src: '/var/log/mysqld.log',dest: '/data/logs/mysqld.log'}
+
