@@ -2,7 +2,7 @@ name: Docs Build and Upload
 
 on: 
   push:
-    # paths: docs/**
+    paths: docs/**
 
 jobs:
   build:
@@ -21,9 +21,16 @@ jobs:
       env:
         CI: true
     
-    - name: Commit files
+    - name: changes
       run: |
         cd docs
+        git clone https://github.com/Websoft9/websoft9.github.io.git
+        cp -r html/* websoft9.github.io/docs/
+        echo $(ls websoft9.github.io/docs/)
+        
+    - name: Commit files
+      run: |
+        cd websoft9.github.io
         git config --local user.email "xu_junkai@foxmail.com"
         git config --local user.name "Mozlk"
         git commit -m "Update Docs" -a
@@ -32,6 +39,5 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.TOKEN }}
-        directory: docs
+        directory: websoft9.github.io
         repository: https://github.com/Websoft9/websoft9.github.io.git
-
