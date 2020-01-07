@@ -6,7 +6,6 @@ name: Ansible Roles sync
 
 on: 
   push:
-    paths: docs/**
 
 
 
