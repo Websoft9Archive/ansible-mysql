@@ -2,7 +2,7 @@ name: Docs Build and Upload
 
 on: 
   push:
-    # paths: docs/**
+    paths: docs/**
 
 jobs:
   build:
@@ -40,4 +40,4 @@ jobs:
       with:
         github_token: ${{ secrets.TOKEN }}
         directory: docs/websoft9.github.io
-        repository: https://github.com/Websoft9/websoft9.github.io.git
+        repository: Websoft9/websoft9.github.io.git
