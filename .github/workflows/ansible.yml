@@ -2,7 +2,7 @@ name: Ansible Roles sync
 
 on: 
   schedule:
-    - cron: '0 */1 * * *'
+    - cron: '0 6 * * *'
 
 jobs:
   build:
