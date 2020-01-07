@@ -39,5 +39,5 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.TOKEN }}
-        directory: websoft9.github.io
+        directory: docs/websoft9.github.io
         repository: https://github.com/Websoft9/websoft9.github.io.git
