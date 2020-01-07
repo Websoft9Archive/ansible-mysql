@@ -15,7 +15,6 @@ jobs:
         
     - name: Update Roles
       run: |
-        # rm -rf roles/*
         ansible-galaxy install -r requirements.yml -f
     
     - name: Commit files
