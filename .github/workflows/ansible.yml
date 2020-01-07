@@ -7,8 +7,6 @@ name: Ansible Roles sync
 on: 
   push:
 
-
-
 jobs:
   build:
     runs-on: ubuntu-latest
