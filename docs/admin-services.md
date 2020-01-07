@@ -10,4 +10,3 @@ sudo systemctl restart docker
 sudo systemctl stop docker
 sudo systemctl status docker
 ```
-
