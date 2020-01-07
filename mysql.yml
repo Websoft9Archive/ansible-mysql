@@ -31,4 +31,4 @@
    - role: role_docker
    - role: role_docker_phpmyadmin
    - role: role_init_password
-    # - {role: end, tags: "end"}                                                                                     
+   - role: end                                                                             
