@@ -1,14 +1,4 @@
-# 服务器前置任务
-- name: Pre_mysql
-  hosts: all
-  become: yes
-  become_method: sudo
-  gather_facts: False
-  pre_tasks:
-
-
 # 核心任务
-
 - name: MySQL
   hosts: all
   become: yes
@@ -23,7 +13,6 @@
       4: MySQL8.0(only for Ubuntu)\n"
       private: no
       default: 3
-
   vars:
     temp_ver:
       '1': '5.5'
@@ -31,12 +20,15 @@
       '3': '5.7'
       '4': '8.0'
     mysql_version: "{{temp_ver[mysql_version_number]}}" 
+  
+  vars_files:
+    - vars/main.yml
 
   roles:
-    - {role: common , tags: "common"}  
-    - {role: cloud , tags: "cloud"}  
-    - {role: mysql, tags: "mysql"}
-    - {role: docker, tags: "docker"}
-    - {role: docker_phpmyadmin, tags: "docker_phpmyadmin"}
-    #- {role: initpassword, tags: "initpassword"}
-    - {role: end, tags: "end"}                                                                                     
+   - role: role_common   
+   - role: role_cloud
+   - role: role_mysql
+   - role: role_docker
+   - role: role_docker_phpmyadmin
+   - role: role_init_password
+    # - {role: end, tags: "end"}                                                                                     

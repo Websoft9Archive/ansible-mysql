@@ -1,0 +1,26 @@
+name: Ansible Roles sync
+
+on: 
+  schedule:
+    - cron: '0 */1 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+        
+    - name: Update Roles
+      run: |
+        # rm -rf roles/*
+        ansible-galaxy install -r requirements.yml -f
+    
+    - name: Commit files
+      run: |
+        git config --local user.email "xu_junkai@foxmail.com"
+        git config --local user.name "Mozlk"
+        git commit -m "Update Role" -a
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.TOKEN }}
