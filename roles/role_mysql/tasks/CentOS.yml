@@ -5,7 +5,7 @@
   with_items:
     - {src: mysql-community.repo.jinja2,dest: /etc/yum.repos.d/mysql-community.repo}
     - {src: RPM-GPG-KEY-mysql,dest: /etc/pki/rpm-gpg/}
-  when: ansible_distribution_major_version == 7
+  when: ansible_distribution_major_version == "7"
 
 - name: Install MySQL{{ mysql_version }}
   yum: 
