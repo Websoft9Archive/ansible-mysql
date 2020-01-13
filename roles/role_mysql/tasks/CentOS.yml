@@ -51,6 +51,7 @@
     name: root 
     host: "{{ item }}" 
     password: "{{mysql_root_password}}"
+    login_unix_socket: /var/lib/mysql/mysql.sock
   with_items:
     - 127.0.0.1
     - ::1
@@ -64,6 +65,7 @@
     login_password: "{{mysql_root_password}}"
     name: ''
     host_all: yes
+    login_unix_socket: /var/lib/mysql/mysql.sock
     state: absent
 
 - name: Remove hostname user accounts
@@ -74,6 +76,7 @@
   mysql_db:
     login_user: root
     login_password: "{{mysql_root_password}}"
+    login_unix_socket: /var/lib/mysql/mysql.sock
     name: test
     state: absent
 
