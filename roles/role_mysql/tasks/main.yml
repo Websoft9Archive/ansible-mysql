@@ -14,7 +14,6 @@
     login_password: '{{mysql_root_password}}'
     name: "{{ item.name }}"
     encoding: "{{ item.encoding | default('utf8mb4',true) }}"
-    login_unix_socket: /var/lib/mysql/mysql.sock
     state: "{{ item.state | default('present',true) }}"
   with_items: "{{ mysql_databases }}"
   when: (mysql_databases is defined) and (mysql_databases != none)
@@ -24,7 +23,6 @@
   mysql_user:
     login_user: root
     login_password: '{{mysql_root_password}}'
-    login_unix_socket: /var/lib/mysql/mysql.sock
     name: "{{ item.name }}"
     host: "{{ item.host | default('localhost',true) }}"
     password: "{{ item.password | default('123456',true) }}"

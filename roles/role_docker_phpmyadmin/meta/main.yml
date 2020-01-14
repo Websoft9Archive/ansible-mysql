@@ -1,5 +1,5 @@
 ---
-dependencies: [role_mysql,role_docker]
+dependencies:
 
 galaxy_info:
   author: 
