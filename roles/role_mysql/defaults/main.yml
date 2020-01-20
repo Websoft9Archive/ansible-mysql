@@ -9,6 +9,6 @@ mysql_databases: []
   
 mysql_users: []
 #  - name: example
-#    host: locahost
+#    host: localhost
 #    password: password
 #    priv: 'example.*:ALL'
