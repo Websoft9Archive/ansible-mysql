@@ -38,3 +38,5 @@ sudo systemctl status docker
 ## Windows 系统
 
 Windows下的镜像采用操作系统的服务管理功能，来实现 MySQL 的启动、停止和重启操作
+
+![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/mysql-servicewin-websoft9.png)

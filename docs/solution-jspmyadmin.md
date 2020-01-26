@@ -1,4 +1,4 @@
-# 图形化工具：jspMyAdmin
+# GUI:jspMyAdmin
 
 下面介绍常见的JspMyAdmin操作
 

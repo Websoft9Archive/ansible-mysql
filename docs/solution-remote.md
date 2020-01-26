@@ -1,4 +1,4 @@
-# 设置 MySQL 远程访问
+# MySQL remote connection
 
 当你想通过本地的电脑的MySQL客户端（例如：Navicat）连接服务器上的MySQL的时候，就需要设置 MySQL 的远程访问。
 

@@ -1,4 +1,4 @@
-# 图形化工具：Navicat
+# GUI:Navicat
 
 如果你已经开启服务器安全组3306端口，并设置完成 MySQL 远程连接，可以参考如下的步骤使用 Navicat：
 

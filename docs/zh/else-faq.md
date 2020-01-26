@@ -1,34 +1,33 @@
 # FAQ
 
-#### 单台服务器上是否可以跑多个容器？
+#### 单台服务器上是否可以安装多个 MySQL实例？
 
-只要服务器资源允许，单台服务器上可以运行成百上千个容器
+理论上可以，但实际上不建议
 
-#### 什么是MySQL的C/S模式？
+#### 什么是 MySQL 的 Client 和 Server？
 
-MySQL安装后，在宿主机（服务器）端会运行一个 MySQL Daemon 守护进程，同时也安装一个MySQL客户端与这个守护进程通信。但客户端与守护进程是分离的，即可以在任何地方运行客户端，然后通过远程与守护进程通信。
-![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/docker/docker-cs-websoft9.png)
+MySQL Server 是指 MySQL 程序本体，而 MySQL Client 指采用TCP协议用于连接程序本地的客户端。它们是两个完全不同的程序，也就是说它们并需要同时安装到同一台服务上。
 
-#### 是否可以通过SSH连接容器？
+#### MySQL 中的 test 数据库是什么？
 
-在Container上的 console 控制台可以很方便的使用命令操作
-![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/docker/portainer/portainer-console-websoft9.png)
-
-#### 一个容器中可以运行多个应用吗？
-
-可以。但是从微服务架构角度看，建议一个容器运行单个应用或单个进程
-
-#### 容器中的服务是否可以被互联网访问？
-
-通过与宿主机（服务器）进行端口映射，实现被互联网用户访问
-
-#### 是否有可视化的 MySQL 管理工具？
-
-有，推荐使用 Portainer
+在MySQL5.7 版本之前，安装 MySQL 时会默认包含一个 test 数据库，该数据库仅仅用来测试使用，但是所有能连接到MySQL的用户，几乎都拥有test库的所有权限，因此存在一定的安全隐患。从信息安全角度考虑，如果您发现您使用的 MySQL 中有该 test 数据库，请**务必删除**。
 
 #### 是否可以修改 MySQL 根目录？
 
 可以，但不建议修改
+
+#### 数据库 root 用户对应的密码是多少？
+
+密码存放在服务器相关文件中：`/credentials/password.txt`
+
+#### 是否有可视化的数据库管理工具？
+
+有，内置phpMyAdmin
+
+#### 如何禁止外界访问phpMyAdmin？
+
+连接服务器，编辑 [phpMyAdmin 配置文件](/zh/stack-components.md#phpmyadmin)，将其中的 `Require all granted` 更改为 `Require ip 192.160.1.0`，然后重启 Apache 服务
+
 
 #### 部署和安装有什么区别？
 

@@ -1,4 +1,4 @@
-# 图形化工具：MySQL-Front
+# GUI:MySQL-Front
 
 MySQL-Front是一款小巧的管理Mysql的应用程序。下面介绍常见的MySQL-Front操作。
 

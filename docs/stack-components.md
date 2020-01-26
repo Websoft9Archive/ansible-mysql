@@ -2,19 +2,40 @@
 
 The MySQL deployment package contains a sequence software (referred to as "components") required for MySQL to run. The important information such as the component name, installation directory path, configuration file path, port, version, etc. are listed below.
 
-> MySQL-Server, MySQL-Agent, MySQL-Web have included for this deployment solution
-
 ## Path
+You should know the components is different for different OS before using MySQL/MariaDB
 
-### MySQL
+### Linux
 
-MySQL root directory: */var/lib/docker*  
-MySQL image directory: */var/lib/docker/image*   
-MySQL daemon.json: please create it when you need and save to to the directory */etc/docker*   
+#### MySQL&MariaDB
 
-### Portainer
+MySQL install directory: */usr/share/mysql*  
+MySQL data directory: */data/mysql*  
+MySQL Configuration File: */etc/my.cnf*  
+MySQL error log: */var/log/mysql/mysqld.log*  
+MySQL Process Identification Number: */run/mysqld/mysqld.pid*  
+MySQL Socket: */var/lib/mysql/mysql.sock*  
 
-Portainer Volume: */var/lib/docker/volumes/portainer_data/_data*    
+#### phpMyAdmin on Docker
+
+Most of time, we used Docker to install phpMyAdmin
+
+#### phpMyAdmin on PHP
+
+For php runtime, e.g LAMP/LNMP, phpMyAdmin is an application for deployment   
+
+phpMyAdmin installation directory: */data/apps/phpmyadmin*  
+phpMyAdmin configuration file: */data/apps/phpmyadmin/config.inc.php*   
+phpMyAdmin vhost configuration file: */etc/httpd/conf.d/phpMyAdmin.conf*   
+
+### Windows Sever
+
+#### MySQL&MariaDB
+
+Database install directory: */C:/websoft9/mysql*  
+Database data directory: */C:/websoft9/mysql/data*  
+Database configuration file: */C:/websoft9/mysql/my.ini*  
+
 
 ## Ports
 
@@ -24,7 +45,9 @@ These ports should be opened for this application:
 
 | Name | Number | Use |  Necessity |
 | --- | --- | --- | --- |
-| Portainer | 9000 | Remote connect Portainer | Optional |
+| phpMyAdmin on Docker | 9090 | HTTP to visit phpMyAdmin | Optional |
+| MySQL | 3306 | remote connect MySQL | Optional |
+| MariaDB | 3306 | remote connect MariaDB | Optional |
 
 ## Version
 
@@ -33,6 +56,9 @@ You can see the version from product page of Marketplace. However, after being d
 ```shell
 # Linux Version
 lsb_release -a
+
+# MySQL version
+mysql -V
 
 # MySQL Version
 docker -v

@@ -16,7 +16,13 @@ module.exports = [
         collapsable: false,
         children: [
           '/solution-study',
-          '/solution-portainer',
+          '/solution-password',
+          '/solution-remote',
+          '/solution-phpmyadmin',
+          '/solution-jspmyadmin',
+          '/solution-navicat',
+          '/solution-workbench',
+          '/solution-mysqlfront',
           '/solution-backup',
           '/solution-upgrade',
           '/solution-more',
@@ -29,6 +35,7 @@ module.exports = [
         children: [
           '/admin-services',
           ['https://support.websoft9.com/docs/linux/admin-practices.html','Linux'],
+          ['https://support.websoft9.com/docs/windows/admin-practices.html','Windows'],
         ]
       },
       

@@ -1,6 +1,3 @@
----
-sidebarDepth: 3
----
 # 图形化工具：phpMyAdmin
 
 phpMyAdmin是很受欢迎的MySQL数据库管理工具，下面介绍常见的phpMyAdmin操作
@@ -36,3 +33,11 @@ phpMyAdmin是很受欢迎的MySQL数据库管理工具，下面介绍常见的ph
 3. 数据库备份文件（.sql后缀）生成后，保存到本地完成导出工具
 4. 恢复数据库，对应的是“导入”操作，具体参考下图 ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-import-websoft9.png)
 5. 导入文件特别要注意字符集兼容性
+
+## phpMyAdmin 限制特定 IP 访问
+
+把 phpMyAdmin.conf（```/etc/httpd/conf.d/phpmyAdmin.conf```）文件中的：  
+     ```Require all granted``` 
+改为：  
+     ```Require ip xxx.xxx.xxx.xxx```  
+这样，只有指定 IP 的主机能访问 phpMyAdmin，IP还可以缩写：192.168.*.* 这样则表示以 192.168 开头的 IP 段都能访问。 修改完成后需要重启 Apache
