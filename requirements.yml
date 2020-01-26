@@ -1,27 +1,20 @@
-- src: https://github.com/websoft9dev/role_common
+- src: http://github.com/websoft9dev/role_common
   version: master
-  name: common
 
-- src: https://github.com/websoft9dev/role_cloud
+- src: http://github.com/websoft9dev/role_cloud
   version: master
-  name: cloud
 
-- src: https://github.com/websoft9dev/role_mysql
+- src: http://github.com/websoft9dev/role_mysql
   version: master
-  name: mysql
 
-- src: https://github.com/websoft9dev/role_initpassword
+- src: http://github.com/websoft9dev/role_init_password
   version: master
-  name: initpassword
 
-- src: https://github.com/websoft9dev/role_docker
+- src: http://github.com/websoft9dev/role_docker
   version: master
-  name: docker
 
-- src: https://github.com/websoft9dev/role_docker_phpmyadmin
+- src: http://github.com/websoft9dev/role_docker_phpmyadmin
   version: master
-  name: docker_phpmyadmin
 
-- src: https://github.com/websoft9dev/role_end
+- src: http://github.com/websoft9dev/role_end
   version: master
-  name: end

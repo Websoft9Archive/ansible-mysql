@@ -7,7 +7,7 @@
 
 ## 配置要求
 
-操作系统：目支持 CentOS, Ubuntu以上部署此脚本，确保是干净的操作系统
+操作系统：目支持 CentOS, Ubuntu以上部署此脚本，确保是干净的操作系统  
 硬件配置：最低1核1G，10G系统盘空间
 
 ## 组件
@@ -18,7 +18,7 @@
 
 ## 本项目安装的是 MySQL 最新版吗？
 
-本项目采用官方提供的安装脚本进行安装，官方会在安装脚本中对版本进行控制，即每一次安装均可保证为 MySQL 官方发布的最新稳定版。
+本项目采用官方提供的安装脚本进行安装，官方会在安装脚本中对小版本进行控制，即每一次安装均可保证为 MySQL 官方发布的最新稳定版。
 
 我们会定期检查安装脚本 URL 地址的准确性，以保证用户可以顺利安装。
 
@@ -43,7 +43,7 @@ wget -N https://raw.githubusercontent.com/Websoft9/linux/master/ansible_script/i
 
 ## 文档
 
-文档链接：https://support.websoft9.com/docs/mysql
+文档链接：https://support.websoft9.com/docs/mysql/zh
 
 ## FAQ
 

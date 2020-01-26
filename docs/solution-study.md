@@ -1,4 +1,3 @@
-# MySQL administrator
 
 ## MySQL commands
 
