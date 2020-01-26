@@ -55,4 +55,23 @@ MySQL上的应用备份主要通过**下载Volume**实现最小化的备份方�
 通用的手动备份操作步骤如下：
 
 1. 使用phpMyAdmin等可视化工具，导致数据库（建议SQL格式）
-3. 将备份文件下载到本地，备份工作完成
+2. 将备份文件下载到本地，备份工作完成
+
+In phpMyAdmin, Export is to back up the database, import and restore the database.
+
+#### Export
+
+1. Login to phpMyAdmin, select your database then click "Export" tab on the top menu
+   ![](http://libs.websoft9.com/Websoft9/DocsPicture/en/phpmyadmin/phpmyadmin-export-websoft9.png)
+
+2. Select suitable Export method,Format for you, then click the "Go" button to start export
+
+3. After the database backup file (.sql suffix) is generated, save it to the local computer
+
+
+#### Import
+
+1. Restore the database, corresponding to the "Import" operation, refer to the following
+   ![](https://libs.websoft9.com/Websoft9/DocsPicture/en/mysql/mysql-import-websoft9.png)
+
+2. Import files should pay special attention to character set compatibility

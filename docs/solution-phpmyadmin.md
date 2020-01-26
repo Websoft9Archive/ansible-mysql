@@ -1,4 +1,4 @@
-# GUI:phpMyAdmin
+# GUI: phpMyAdmin
 
 phpMyAdmin is a very popular MySQL database management tool. The following describes the common phpMyAdmin operations.
 

@@ -1,57 +1,56 @@
 # MySQL remote connection
 
-当你想通过本地的电脑的MySQL客户端（例如：Navicat）连接服务器上的MySQL的时候，就需要设置 MySQL 的远程访问。
+Most of the time, if you want to use GUI tools to manage MySQL/MariaDB on you local computer, you shoud open the remote connection of MySQL/MariaDB. 
 
-数据库是高安全应用，设置远程访问，最少两个独立的步骤：
+Database is high security application, you need two steps for remote connection settings at least:
 
-## 安全组放通3306端口
+## Enable the TCP:3306 port
 
-一般来说，MySQL使用的是3306端口。
+In general, MySQL uses port 3306.
 
-首先，我们要登录到云控制台，打开云服务器所在的安全组中，保证3306端口是开启的。
-
+First, you must go to the Cloud Console and enable the **TCP:3306** port of Security Group
 ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/mysql3306-websoft9.png)
 
 
-## 开启MySQL远程连接
+## Open MySQL remote connection
 
-安全组开启后，还没有完成MySQL远程方案的设置。  
+After the security group is turned on, the setup of the MySQL remote solution has not been completed.
 
-接下来，还需要对 MySQL 自身进行设置，以便其接受外部网络的访问
+Next, you need to set up MySQL itself so that it can access external networks
 
-我们提供两种开启MySQL的远程连接的方案，第一种是可视化方式，第二种是命令方式：  
+We provide two solutions to open the remote connection of MySQL. The first is GUI and the second is the command mode:
 
-#### 可视化开启（推荐）
+#### Use GUI(recommend)
 
-在phpMyAdmin中开启远程只需要将root账号的访问方式改成“任意方式访问”，具体如下：
+To enable remote in phpMyAdmin, you only need to change the access mode of the root account to "any way to access", as follows:
 
-1. 打开账户->找到主机名为127.0.0.1的root用户，点击“修改权限”
-   ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/mysql-openremote001-websoft9.png)
-2. 在“登录信息”选项卡中，将“主机名”下拉菜单选项更改为“任意主机”，点击执行
-   ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/mysql-openremote002-websoft9.png)
-3. 以上两步就完成了开启远程连接的工作
+1. Log in phpMyAdmin, go to User account->Edit privileges of root account
+   ![](http://libs.websoft9.com/Websoft9/DocsPicture/en/phpmyadmin/phpmyadmin-modifypw001-websoft9.png)
 
-#### 命令开启
+2. Select the tab Login Information, Host Name fill in "%", click "Go" button completing this setting
+   ![](http://libs.websoft9.com/Websoft9/DocsPicture/en/phpmyadmin/phpmyadmin-modifypw002-websoft9.png)
 
-如果您的镜像中没有安装phpMyAdmin，那么就需要通过命令方式开启远程连接。具体如下：
+#### Use commands
 
-1. 使用SSH连接到服务器，登录到MySQL
+If you have not installed phpMyAdmin or other GUI tools in you Server, you should use command to open the MySQL remote connection:
+
+1. Use SSH to connect MySQL Server
    ```
-   mysql -u root -p 数据库root密码
+   sudo mysql -u root -p password
    ```
  
-2. 写入SQL语句,开启远程访问
+2. Open the remote connection
    ```
    mysql>  use mysql;
    mysql>  update user set host = '%' where user = 'root';
    ```
 
-3. 运行下面的语句，查看设置是否生效（显示%的值）
+3. Test it
    ```
    select host,user from user where user='root'
    ```
-4. 退出MySQL命令，回到Linux命名模式，重启MySQL
+4. Exit MySQL command mode, return to Linux and restart it
    ```
-   systemctl restart mysqld
+   sudo systemctl restart mysqld
    ```
-   > 本步骤是必须的，否则在用Navicat Premium/MySQL-Front等工具测试远程的时候会报错误信息
+   > This step is necessary, otherwise Navicat Premium/MySQL-Front can't connect to MySQL

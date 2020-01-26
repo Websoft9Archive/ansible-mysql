@@ -24,6 +24,22 @@ yum update -y
 
 ## MySQL 更新升级
 
+### On Linux
+
 上面的系统升级命令，支持小版本升级。例如：5.6.x to 5.6.y 或 5.7.x to 5.7.y
 
 数据库大版本之间的差异较大，无法提供稳妥的升级方案
+
+### On Windows
+
+MySQL upgrade on Windows Server divided into two parts
+
+1. Use Windows Update to upgrade Windows System
+2. Dowload the lastest MySQL, stop the MySQL Services and replace the old files of MySQL
+
+## 常见问题
+
+#### 大版本升级后，无法更改数据库密码？
+```
+mysql_upgrade -u root -p 13456
+```

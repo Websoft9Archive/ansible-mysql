@@ -26,14 +26,17 @@ yum update -y
 
 ## MySQL Upgrade
 
-It is very easy for upgrading MySQL:
+### On Linux
 
-``` shell
-#For Ubuntu&Debian
-sudo apt-get update
-sudo apt-get install docker-engine
+The system update command can update MySQL patch also, e.g: 5.6.x to 5.6.y or 5.7.x to 5.7.y
 
-#For Centos&Redhat
-sudo yum update
-sudo yum install docker-engine
-```
+There are large differences between database distribution versions, which cannot provide a secure upgrade solution
+
+### On Windows
+
+### On Windows
+
+MySQL upgrade on Windows Server divided into two parts
+
+1. Use Windows Update to upgrade Windows System
+2. Dowload the lastest MySQL, stop the MySQL Services and replace the old files of MySQL

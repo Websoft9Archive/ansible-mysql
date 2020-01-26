@@ -1,34 +1,24 @@
 # FAQ
 
-#### Can I run many containers in one Server?
+#### What is the password for the database root user?
 
-Yes, you can run more than hundreds of containers if the Server have enough computing resources
+The password is stored in the server related file: `/credentials/password.txt`
 
-#### What is the C/S model of MySQL?
+#### Is there a web-base GUI database management tools?
 
-After the installation of MySQL, Host Machine(Sever) will run  MySQL Daemon process, and one MySQL client communicate with this process. But this client is detached from the MySQL Daemon process which we call it MySQL Server. You can use any MySQL client to communicate with the MySQL Server from different machine.
-![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/docker/docker-cs-websoft9.png)
+Yes, phpMyAdmin is on it, visit by *http://Server Internet IP:9090*
 
-#### Can I use the SSH to connect and running command from the Container?
+#### Can I connect MySQL from Internet(remote)?
 
-Yes, you can use command if you have enable the SSH connection of Container
-![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/docker/portainer/portainer-console-websoft9.png)
+You should enable the remote connection first
 
-#### Can I run many services in one Container?
+#### How to get the status of MySQL?
 
-Yes, but we suggest you just run one service in one Container for the serverless infrastructure
-
-#### Can use visit my application of MySQL from Internet?
-
-If you have completed the port mapping for Server with MySQL, use can visit from Internet
-
-#### If there have MySQL GUI tools?
-
-Yes, we suggest you use Portainer which is very popular
+Run command `ps ``-``ef ``| grep mysqld` to list mysql process
 
 #### Can I modify the root directory of MySQL?
 
-Yes, but we don't recommend to modify it
+Yes, please refer the documentation [Modify MySQL Data Directory](/solution-more.html#modify-mysql-data-directory)
 
 #### What's the difference between Deployment and Installation?
 
