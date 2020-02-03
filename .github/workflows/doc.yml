@@ -26,7 +26,7 @@ jobs:
         cd docs
         git clone https://github.com/Websoft9/websoft9.github.io.git
         cp -r html/* websoft9.github.io/docs/
-        chown -R runner: websoft9.github.io
+        sudo chown -R runner: websoft9.github.io
         echo $(ls websoft9.github.io/docs/)
         
     - name: Commit files
