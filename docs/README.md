@@ -4,7 +4,6 @@ home: false
 
 # Overview
 
-
 This documentation is provided by [Websoft9](https://www.websoft9.com/), it can help users to acquire skills of MySQL Deployment, Installation, Configuration, MySQL Image Management, Backup, Upgrade, Connect Instance and more.
 
 [MySQL](https://www.mysql.com/products/community/) is a popular open source database. Whether you are a fast growing web property, technology ISV or large enterprise, MySQL can cost-effectively help you deliver high performance, scalable database applications. It is intend to provide a high reliable database management system. MariaDB is one of the most popular database servers. Made by the original developers of MySQL. Guaranteed to stay open source.
