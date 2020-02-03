@@ -12,12 +12,12 @@ jobs:
         
     - name: npm install vuepress
       run: |
-       npm install -g vuepress
+       sudo npm install -g vuepress
         
     - name: vuepress build
       run: |
         cd docs
-        vuepress build .
+        sudo vuepress build .
       env:
         CI: true
     
@@ -26,6 +26,7 @@ jobs:
         cd docs
         git clone https://github.com/Websoft9/websoft9.github.io.git
         cp -r html/* websoft9.github.io/docs/
+        chown -R runner: websoft9.github.io
         echo $(ls websoft9.github.io/docs/)
         
     - name: Commit files
