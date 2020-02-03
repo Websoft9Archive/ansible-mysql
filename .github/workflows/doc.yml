@@ -12,7 +12,7 @@ jobs:
         
     - name: npm install vuepress
       run: |
-       sudo npm install -g vuepress
+       npm install -g vuepress
         
     - name: vuepress build
       run: |
