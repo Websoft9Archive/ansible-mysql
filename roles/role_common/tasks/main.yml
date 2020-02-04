@@ -6,6 +6,12 @@
   - name: Install Extra Packages for Enterprise Linux
     yum: 
       name: epel-release
+    when: ansible_distribution != 'Amazon'
+
+  - name: Install Extra Packages for Enterprise Linux
+    shell: amazon-linux-extras install epel
+    when: ansible_distribution == 'Amazon'
+
 
   - name: Disable SELinux
     selinux:

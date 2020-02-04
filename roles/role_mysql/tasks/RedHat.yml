@@ -5,7 +5,16 @@
   with_items:
     - {src: mysql-community.repo.jinja2,dest: /etc/yum.repos.d/mysql-community.repo}
     - {src: RPM-GPG-KEY-mysql,dest: /etc/pki/rpm-gpg/}
-  when: ansible_distribution_major_version == "7"
+  when: ansible_distribution == "CentOS" 
+
+- name: Import MySQL Repo
+  copy:
+    src: '{{item.src}}'
+    dest: '{{item.dest}}'
+  with_items:
+    - {src: mysql-community-aws.repo.jinja2,dest: /etc/yum.repos.d/mysql-community.repo}
+    - {src: RPM-GPG-KEY-mysql,dest: /etc/pki/rpm-gpg/}
+  when: ansible_distribution == 'Amazon'
 
 - name: Install MySQL{{ mysql_version }}
   yum: 
