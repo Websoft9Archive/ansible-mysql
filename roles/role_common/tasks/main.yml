@@ -25,7 +25,7 @@
     when: ansible_python.version.major == 2
 
 
-  when: ansible_distribution == 'CentOS'
+  when: ansible_os_family == 'RedHat'
 
 # Ubuntu 更新 安装基础软件工具等操作
 - block:
@@ -44,7 +44,7 @@
       force_apt_get: True
       allow_unauthenticated: yes
   
-  when: ansible_distribution == 'Ubuntu'
+  when: ansible_os_family == 'Debian'
 
 - name: pip requirements
   pip:
