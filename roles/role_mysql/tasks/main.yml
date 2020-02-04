@@ -3,7 +3,7 @@
     name: PyMySQL
 
 - import_tasks: CentOS.yml
-  when: ansible_distribution == 'CentOS'
+  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Amonzon'
 
 - import_tasks: Ubuntu.yml
   when: ansible_distribution == 'Ubuntu'
