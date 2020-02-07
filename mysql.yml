@@ -6,29 +6,43 @@
   gather_facts: True
   vars_prompt:
     - name: 'mysql_version_number'
-      prompt: "\nPlease choose the number for MySQL version [ 1/2/3/4] \n
-      1: MySQL5.5(only for CentOS)\n
-      2: MySQL5.6(only for CentOS)\n
+      prompt: "\nPlease choose the number for MySQL version [ 1/2/3/4] \n\n
+      1: MySQL5.5(only for CentOS7.x, AmazonLinux)\n
+      2: MySQL5.6(only for CentOS7.x, AmazonLinux, Ubuntu16.04 )\n
       3: MySQL5.7\n
-      4: MySQL8.0(only for Ubuntu)\n"
+      4: MySQL8.0\n"
       private: no
       default: 3
+
+    - name: 'phpmyadmin_yesorno'
+      prompt: "\nDo you want to install phpMyAdmin? [ 1/2 ] \n\n
+      1: Yes\n
+      2: No\n"
+      private: no
+      default: 1
+
   vars:
-    temp_ver:
+    temp_ver1:
       '1': '5.5'
       '2': '5.6'
       '3': '5.7'
       '4': '8.0'
-    mysql_version: "{{temp_ver[mysql_version_number]}}" 
+    mysql_version: "{{temp_ver1[mysql_version_number]}}" 
+
+    temp_ver2:
+      '1': 'yes'
+      '2': 'no'
+    phpmyadmin_yn: "{{temp_ver2[phpmyadmin_yesorno]}}" 
+
   
   vars_files:
     - vars/main.yml
 
   roles:
-   - role: role_common   
-   - role: role_cloud
-   - role: role_mysql
-   - role: role_docker
-   - role: role_docker_phpmyadmin
-   - role: role_init_password
-   - role: role_end                                                                             
+   - {role: role_common, tags: "role_common"}   
+   - {role: role_cloud, tags: "role_cloud"}
+   - {role: role_mysql, tags: "role_mysql"}
+   - {role: role_docker, when: phpmyadmin_yn != 'no', tags: "role_docker"}
+   - {role: role_docker_phpmyadmin, when: phpmyadmin_yn != 'no',  tags: "role_docker_phpmyadmin"}
+   - {role: role_init_password, tags: "role_init_password"}
+   - {role: role_end, tags: "role_end"} 
