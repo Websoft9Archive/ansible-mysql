@@ -16,9 +16,19 @@
     - {src: RPM-GPG-KEY-mysql,dest: /etc/pki/rpm-gpg/}
   when: ansible_distribution == 'Amazon'
 
+# 更新YUM缓存
+- yum: update_cache=yes
+    
+# 将MYSQL通过代理下载到YUM缓存目录
+- name: Download MySQL{{ mysql_version }}
+  shell: yumdownloader mysql-community-client mysql-community-server /var/cache/yum/x86_64/7/mysql-community/packages
+  environment:
+    http_proxy: http://websoft9:qwer1234@40.86.84.130:8922
+    https_proxy: http://websoft9:qwer1234@40.86.84.130:8922
+
 - name: Install MySQL{{ mysql_version }}
   yum: 
-    name: [mysql-community-server]
+    name: [ mysql-community-client,mysql-community-server]
 
 - name: Create Databases Directory
   file:
