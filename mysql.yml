@@ -5,7 +5,7 @@
   become_method: sudo
   gather_facts: True
   vars_prompt:
-    - name: 'mysql_version_number'
+    - name: 'mysql_selection'
       prompt: "\nPlease choose the number for MySQL version [ 1/2/3/4] \n\n
       1: MySQL5.5(only for CentOS7.x, AmazonLinux)\n
       2: MySQL5.6(only for CentOS7.x, AmazonLinux, Ubuntu16.04 )\n
@@ -14,7 +14,7 @@
       private: no
       default: 3
 
-    - name: 'phpmyadmin_yesorno'
+    - name: 'phpmyadmin_selection'
       prompt: "\nDo you want to install phpMyAdmin? [ 1/2 ] \n\n
       1: Yes\n
       2: No\n"
@@ -22,18 +22,16 @@
       default: 1
 
   vars:
-    temp_ver1:
+    mysql_select:
       '1': '5.5'
       '2': '5.6'
       '3': '5.7'
       '4': '8.0'
-    mysql_version: "{{temp_ver1[mysql_version_number]}}" 
+    mysql_version: "{{mysql_select[mysql_selection]}}" 
 
-    temp_ver2:
+    phpmyadmin_select:
       '1': 'yes'
-      '2': 'no'
-    phpmyadmin_yn: "{{temp_ver2[phpmyadmin_yesorno]}}" 
-
+      '2': ''
   
   vars_files:
     - vars/main.yml
@@ -43,6 +41,6 @@
    - {role: role_cloud, tags: "role_cloud"}
    - {role: role_mysql, tags: "role_mysql"}
    - {role: role_docker, when: phpmyadmin_yn != 'no', tags: "role_docker"}
-   - {role: role_docker_phpmyadmin, when: phpmyadmin_yn != 'no',  tags: "role_docker_phpmyadmin"}
+   - {role: role_docker_phpmyadmin, when: phpmyadmin_select[phpmyadmin_selection],  tags: "role_docker_phpmyadmin"}
    - {role: role_init_password, tags: "role_init_password"}
    - {role: role_end, tags: "role_end"} 
