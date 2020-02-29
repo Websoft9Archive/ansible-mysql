@@ -35,7 +35,10 @@
 
     phpmyadmin_select:
       '1': True
+      'y': True
       '2': ''
+      'n': ''
+      
     
     phpmyadmin_install_docker: "{{phpmyadmin_select[phpmyadmin_selection]}}" 
   
