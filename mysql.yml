@@ -40,7 +40,7 @@
    - {role: role_common, tags: "role_common"}   
    - {role: role_cloud, tags: "role_cloud"}
    - {role: role_mysql, tags: "role_mysql"}
-   - {role: role_docker, when: phpmyadmin_yn != 'no', tags: "role_docker"}
+   - {role: role_docker, when: phpmyadmin_select[phpmyadmin_selection], tags: "role_docker"}
    - {role: role_docker_phpmyadmin, when: phpmyadmin_select[phpmyadmin_selection],  tags: "role_docker_phpmyadmin"}
    - {role: role_init_password, tags: "role_init_password"}
    - {role: role_end, tags: "role_end"} 
