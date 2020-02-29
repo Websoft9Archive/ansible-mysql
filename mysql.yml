@@ -34,7 +34,7 @@
     mysql_version: "{{mysql_select[mysql_selection]}}" 
 
     phpmyadmin_select:
-      '1': 'yes'
+      '1': True
       '2': ''
     
     phpmyadmin_install_docker: "{{phpmyadmin_select[phpmyadmin_selection]}}" 
