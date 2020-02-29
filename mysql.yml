@@ -15,7 +15,7 @@
       default: 3
 
     - name: 'phpmyadmin_selection'
-      prompt: "\nDo you want to install phpMyAdmin? [ 1/2 ] \n\n
+      prompt: "\nDo you want to install phpMyAdmin of Docker? [ 1/2 ] \n\n
       1: Yes\n
       2: No\n"
       private: no
@@ -32,6 +32,8 @@
     phpmyadmin_select:
       '1': 'yes'
       '2': ''
+    
+    phpmyadmin_docker: "{{phpmyadmin_select[phpmyadmin_selection]}}" 
   
   vars_files:
     - vars/main.yml
@@ -40,7 +42,7 @@
    - {role: role_common, tags: "role_common"}   
    - {role: role_cloud, tags: "role_cloud"}
    - {role: role_mysql, tags: "role_mysql"}
-   - {role: role_docker, when: phpmyadmin_select[phpmyadmin_selection], tags: "role_docker"}
-   - {role: role_docker_phpmyadmin, when: phpmyadmin_select[phpmyadmin_selection],  tags: "role_docker_phpmyadmin"}
+   - {role: role_docker, when: phpmyadmin_docker, tags: "role_docker"}
+   - {role: role_docker_phpmyadmin, when: phpmyadmin_docker,  tags: "role_docker_phpmyadmin"}
    - {role: role_init_password, tags: "role_init_password"}
    - {role: role_end, tags: "role_end"} 
