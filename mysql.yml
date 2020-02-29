@@ -37,14 +37,14 @@
       '1': 'yes'
       '2': ''
     
-    phpmyadmin_docker: "{{phpmyadmin_select[phpmyadmin_selection]}}" 
+    phpmyadmin_install_docker: "{{phpmyadmin_select[phpmyadmin_selection]}}" 
   
   
   roles:
    - {role: role_common, tags: "role_common"}   
    - {role: role_cloud, tags: "role_cloud"}
    - {role: role_mysql, tags: "role_mysql"}
-   - {role: role_docker, when: phpmyadmin_docker, tags: "role_docker"}
-   - {role: role_docker_phpmyadmin, when: phpmyadmin_docker,  tags: "role_docker_phpmyadmin"}
+   - {role: role_docker, when: phpmyadmin_install_docker, tags: "role_docker"}
+   - {role: role_docker_phpmyadmin, when: phpmyadmin_install_docker,  tags: "role_docker_phpmyadmin"}
    - {role: role_init_password, tags: "role_init_password"}
    - {role: role_end, tags: "role_end"} 
