@@ -4,6 +4,10 @@
   become: yes
   become_method: sudo
   gather_facts: True
+
+  vars_files:
+    - vars/main.yml
+
   vars_prompt:
     - name: 'mysql_selection'
       prompt: "\nPlease choose the number for MySQL version [ 1/2/3/4] \n\n
@@ -35,9 +39,7 @@
     
     phpmyadmin_docker: "{{phpmyadmin_select[phpmyadmin_selection]}}" 
   
-  vars_files:
-    - vars/main.yml
-
+  
   roles:
    - {role: role_common, tags: "role_common"}   
    - {role: role_cloud, tags: "role_cloud"}
