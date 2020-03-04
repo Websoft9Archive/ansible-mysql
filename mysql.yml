@@ -52,7 +52,7 @@
       
     
     phpmyadmin_install_docker: "{{phpmyadmin_select[phpmyadmin_selection]}}" 
-    mysql_remote: "{{remote_select[remote_selection]}}" or "{{phpmyadmin_select[phpmyadmin_selection]}}" 
+    mysql_remote: "{{remote_select[remote_selection]}} or {{phpmyadmin_select[phpmyadmin_selection]}}" 
   
   roles:
    - {role: role_common, tags: "role_common"}   
