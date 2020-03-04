@@ -18,6 +18,13 @@
       private: no
       default: 3
 
+    - name: 'remote_selection'
+      prompt: "\nDo you want to enable MySQL remote connection? [ 1/2 ] \n\n
+      1: Enable remote connection(default)\n
+      2: Disable remote connection\n"
+      private: no
+      default: 1
+
     - name: 'phpmyadmin_selection'
       prompt: "\nDo you want to install phpMyAdmin of Docker? [ 1/2 ] \n\n
       1: Yes\n
@@ -38,10 +45,14 @@
       'y': True
       '2': ''
       'n': ''
+
+    remote_select:
+      '1': True
+      '2': False
       
     
     phpmyadmin_install_docker: "{{phpmyadmin_select[phpmyadmin_selection]}}" 
-  
+    mysql_remote: "{{remote_select[remote_selection]}}" or "{{phpmyadmin_select[phpmyadmin_selection]}}" 
   
   roles:
    - {role: role_common, tags: "role_common"}   
