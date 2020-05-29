@@ -6,5 +6,4 @@ docker_applications:
 init_db: 
   mysql:
     admin: root
-    user: 
     password: "123456"
