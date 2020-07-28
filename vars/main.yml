@@ -1,3 +1,5 @@
+common_os_support: ["CentOS", "Ubuntu", "Amazon"]
+
 mysql_root_password: "123456"
 mysql_remote: True
 docker_applications: 
