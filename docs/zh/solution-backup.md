@@ -39,9 +39,9 @@ sidebarDepth: 3
 
 不同云平台的自动备份方案有一定的差异，详情参考 [云平台备份方案](https://support.websoft9.com/docs/faq/zh/tech-instance.html)
 
-### MySQL应用备份
+### MySQL 备份
 
-MySQL上的应用备份主要通过**下载Volume**实现最小化的备份方案。
+MySQL 数据库备份主要通过**导出数据库**实现最小化的备份方案。
 
 下面以列表的方式介绍这种备份：
 ```
@@ -52,26 +52,31 @@ MySQL上的应用备份主要通过**下载Volume**实现最小化的备份方�
 - 技能要求：非常容易
 - 自动化：无
 ```
+
 通用的手动备份操作步骤如下：
 
-1. 使用phpMyAdmin等可视化工具，导致数据库（建议SQL格式）
+1. 使用phpMyAdmin等可视化工具，导出数据库（建议SQL格式）
+2. 或使用 **mysqldump** 工具导出（效率更高，通用性更强）
+   ```
+   mysqldump -uroot -p databasename>databasename.sql
+   ```
 2. 将备份文件下载到本地，备份工作完成
 
-In phpMyAdmin, Export is to back up the database, import and restore the database.
+在 phpMyAdmin 中，【导出】相当于备份数据库，【导入】相当于恢复数据库。
 
-#### Export
+#### 导出
 
-1. Login to phpMyAdmin, select your database then click "Export" tab on the top menu
-   ![](http://libs.websoft9.com/Websoft9/DocsPicture/en/phpmyadmin/phpmyadmin-export-websoft9.png)
+1. 登录 phpMyAdmin，打开顶部的【导出】标签页
+   ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-export-websoft9.png)
 
-2. Select suitable Export method,Format for you, then click the "Go" button to start export
+2. 选择合适的备份文件类型、备份存放方式，然后开始备份
 
-3. After the database backup file (.sql suffix) is generated, save it to the local computer
+3. 最好将备份文件下载到本地存放
 
 
-#### Import
+#### 导入
 
-1. Restore the database, corresponding to the "Import" operation, refer to the following
-   ![](https://libs.websoft9.com/Websoft9/DocsPicture/en/mysql/mysql-import-websoft9.png)
+1. 登录 phpMyAdmin，打开顶部的【导入】标签页，根据向导开始导入
+   ![](https://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-import-websoft9.png)
 
-2. Import files should pay special attention to character set compatibility
+2. 导入过程中可能会出现数据库字符集不兼容的情况，需要人工干预处理

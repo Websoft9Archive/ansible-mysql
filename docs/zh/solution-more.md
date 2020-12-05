@@ -27,7 +27,7 @@ The binary log contains "event" that describe database changes such as table cre
 
 ### Binary log configuration
 
-You can modify the MySQL configuration _/etc/my.cnf_ to change the binary log settings<br />
+You can modify the MySQL configuration _/etc/my.cnf_ to change the binary log settings
 
 ```
 log_bin = mysql-bin      # enable Binary log
@@ -39,3 +39,5 @@ expire_logs_days = 7     # Binary log expire time
 Some times, there a lot of event for your database, then the binary log file size very rapid growth and your disk space may not enough, if there no space on disk, your MySQL Service can not start.
 
 Suggest you change the expire_logs_day to more smaller if you binary log file size is too big
+
+## 权限设置
