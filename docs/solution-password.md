@@ -25,7 +25,7 @@ You can reset your MySQL password by the following two solution:
 1. Use SSH to connect MySQL Server
 2. Run the following command
    ```
-   sudo git clone https://github.com/Websoft9/linux.git; cd linuxscript/Mysql\_ResetPasswd\_Script;sudo sh reset\_mysql\_password.sh
+   wget -N https://raw.githubusercontent.com/websoft9dev/role_mysql/master/tools/reset_password.sh; bash reset_password.sh
    ```
 ### Manual solution
 
