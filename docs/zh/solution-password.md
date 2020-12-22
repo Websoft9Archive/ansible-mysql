@@ -27,7 +27,7 @@ mysqladmin -u 用户名 -p 旧密码 password '新密码'
 1. 使用SSH远程连接到MySQL服务器
 2. 运行如下命令，按提示输入新密码即可。
    ```
-   sudo git clone https://github.com/Websoft9/linux.git; cd linuxscript/Mysql\_ResetPasswd\_Script;sudo sh reset\_mysql\_password.sh
+   wget -N https://raw.githubusercontent.com/websoft9dev/role_mysql/master/tools/reset_password.sh; bash reset_password.sh
    ```
 ### 手动方案
 
