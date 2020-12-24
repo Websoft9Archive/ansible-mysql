@@ -29,26 +29,3 @@ mysqladmin -u 用户名 -p 旧密码 password '新密码'
    ```
    wget -N https://raw.githubusercontent.com/websoft9dev/role_mysql/master/tools/reset_password.sh; bash reset_password.sh
    ```
-### 手动方案
-
-1. 使用SSH远程连接到MySQL服务器
-2. 停止 MySQL 服务
-   ~~~
-   systemctl stop mysqld
-   ~~~
-3. 采用命令行参数启动mysql 
-   ~~~
-   mysqld_safe --skip-grant-tables &
-   ~~~
-4. 重置密码（这里将密码重置为`123456`）
-   ~~~
-   mysql -e "use mysql;update user set password=password('123456') where user='root';"
-   ~~~
-5. 关闭MySQL进程
-   ~~~
-   kill all mysqld
-   ~~~ 
-6. 启动MySQL服务
-   ~~~
-   systemctl start mysqld
-   ~~~
