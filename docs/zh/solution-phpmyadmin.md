@@ -34,7 +34,30 @@ phpMyAdmin是很受欢迎的MySQL数据库管理工具，下面介绍常见的ph
 4. 恢复数据库，对应的是“导入”操作，具体参考下图 ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-import-websoft9.png)
 5. 导入文件特别要注意字符集兼容性
 
-## phpMyAdmin 限制特定 IP 访问
+## 常见问题
+
+#### phpMyAdmin on Docker如何修改导入文件大小限制？
+
+1. 使用 SFTP 连接服务器，编辑 */data/apps/phpmyadmin/docker-compose.yml* 文件，在环境变量处增加一个字段 `- UPLOAD_LIMIT=20M`
+  ```
+  version: "3.7"
+  services: 
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: "phpmyadmin"
+        environment:
+         - PMA_HOST=172.17.0.1
+         - PMA_PORT=3306
+         - UPLOAD_LIMIT=20M
+  ```
+
+2. 重新创建 phpMyAdmin 容器后生效
+  ```
+  cd /data/apps/phpmyadmin && docker-compose up -d
+  ```
+
+
+#### phpMyAdmin 限制特定 IP 访问
 
 把 phpMyAdmin.conf（```/etc/httpd/conf.d/phpmyAdmin.conf```）文件中的：  
      ```Require all granted``` 
