@@ -59,9 +59,9 @@
 
 #### phpMyAdmin 更新升级
 
-采用 Docker 安装，更新升级方案[参考](https://support.websoft9.com/docs/seafile/zh/solution-upgrade.html#%E7%B3%BB%E7%BB%9F%E7%BA%A7%E6%9B%B4%E6%96%B0)
+- 采用 Docker 安装，更新升级方案[参考](https://support.websoft9.com/docs/seafile/zh/solution-upgrade.html#%E7%B3%BB%E7%BB%9F%E7%BA%A7%E6%9B%B4%E6%96%B0)
 
-采用 yum 安装，升级步骤如下;
+- 采用 yum 安装，升级步骤如下;
 
 1.将新版本 phpMyAdmin 下载到 Websoft9 的 phpMyAdmin 安装目录：/data/apps
    ~~~
