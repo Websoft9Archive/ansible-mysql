@@ -56,3 +56,33 @@
 #### phpMyAdmin 是如何安装的？
 
 采用 Docker 安装，保证 MySQL 环境具有良好的隔离性。
+
+#### phpMyAdmin 更新升级
+
+采用 Docker 安装，更新升级方案[参考](https://support.websoft9.com/docs/seafile/zh/solution-upgrade.html#%E7%B3%BB%E7%BB%9F%E7%BA%A7%E6%9B%B4%E6%96%B0)
+
+采用 yum 安装，升级步骤如下;
+
+1.将新版本 phpMyAdmin 下载到 Websoft9 的 phpMyAdmin 安装目录：/data/apps
+   ~~~
+   cd /data/apps
+   wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-all-languages.zip
+   ~~~
+> 请查看phpMyAdmin新版对php版本的依赖，是否必要升级现有的php版本
+
+2.将老版本 phpMyAdmin 更名，如 phpMyAdmin-4.8
+3.将新版 phpMyAdmin 解压到phpmyadmin，设置用户和组和访问权限
+   ~~~
+   #解压缩
+   tar -zxvf phpMyAdmin-5.0.4-all-languages.tar.gz
+   #删除压缩包
+   rm -rf phpMyAdmin-5.0.4-all-languages.tar.gz
+   #更改文件夹名
+   mv phpMyAdmin-* phpmyadmin
+   #更改文件夹用户权限
+   chmod  -R 750 phpmyadmin
+   #更改用户和组
+   chown  -R apache:apache phpmyadmin
+  ~~~
+4.将老版本中目录中的配置文件 config.inc.php 拷贝 phpmyadmin 目录
+5.在浏览器中打开phpMyAdmin，http:// ip /phpmyadmin，登录并查看新版本
