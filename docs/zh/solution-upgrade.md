@@ -61,7 +61,7 @@ docker-compose up -d
 
 2. 备份旧版本到 */data/apps/phpmyadminBK* 文件夹
 
-3. 下载版本 [phpMyAdmin](https://www.phpmyadmin.net/) 并覆盖 phpmyadmin 安装目录
+3. 下载版本 [phpMyAdmin](https://www.phpmyadmin.net/) 并覆盖 phpmyadmin 安装目录（目录名称与旧版本一致 ）
 
 4. 设置用户和组和访问权限
    ```
