@@ -26,12 +26,18 @@ phpMyAdmin是很受欢迎的MySQL数据库管理工具，下面介绍常见的ph
 
 ## 数据库导入和导出
 
-> 导出即备份数据库，导入即恢复数据库。这个两个操作对phpMyAdmin来说比较简单，具体如下：
+> 导出即备份数据库，导入即恢复数据库。这个两个操作对 phpMyAdmin 来说比较简单，具体如下：
 
-1. 登录phpMyAdmin后，选择您需要操作的数据库后，点击顶部菜单栏的“导出” ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-export-websoft9.png)
+1. 登录phpMyAdmin后，选择您需要操作的数据库后，点击顶部菜单栏的“导出” 
+   ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-export-websoft9.png)
+
 2. 选择导出方式（默认为“快速”）和格式（默认为“SQL”），点击“执行”按钮
+
 3. 数据库备份文件（.sql后缀）生成后，保存到本地完成导出工具
-4. 恢复数据库，对应的是“导入”操作，具体参考下图 ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-import-websoft9.png)
+
+4. 恢复数据库，对应的是“导入”操作，具体参考下图 
+   ![](http://libs.websoft9.com/Websoft9/DocsPicture/zh/mysql/phpmyadmin-import-websoft9.png)
+
 5. 导入文件特别要注意字符集兼容性
 
 ## 常见问题

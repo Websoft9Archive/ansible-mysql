@@ -37,6 +37,44 @@ MySQL upgrade on Windows Server divided into two parts
 1. Use Windows Update to upgrade Windows System
 2. Dowload the lastest MySQL, stop the MySQL Services and replace the old files of MySQL
 
+## phpMyAdmin 更新升级
+
+不同的 phpMyAdmin 安装方式，对应不同的升级方案：
+
+### phpMyAdmin on Docker
+
+Docker 版 phpMyAdmin 只需到 phpMyAdmin 的目录下，运行 docker-compose 命令即可升级：
+
+```
+cd /data/apps/phpmyadmin
+docker-compose pull
+docker-compose up -d
+```
+
+### phpMyAdmin 普通安装
+
+若通过 *http://服务器公网IP/phpmyadmin* 访问，则表示是通过普通的 PHP 应用程序的方式。  
+
+对应的升级方案：  
+
+1. 检查服务器上的 PHP 版本是否满足最新的 [phpMyAdmin](https://www.phpmyadmin.net/) 之要求
+
+2. 备份旧版本到 */data/apps/phpmyadminBK* 文件夹
+
+3. 下载版本 [phpMyAdmin](https://www.phpmyadmin.net/) 并覆盖 phpMyAdmin 安装目录
+
+4. 设置用户和组和访问权限
+   ```
+   #更改文件夹用户权限
+   chmod  -R 750 phpmyadmin
+   #更改用户和组
+   chown  -R apache:apache phpmyadmin
+   ```
+5. 备份目录中的配置文件 config.inc.php 拷贝正式目录
+
+6. 测试安装结果
+
+
 ## 常见问题
 
 #### 大版本升级后，无法更改数据库密码？
