@@ -1,4 +1,5 @@
 common_os_support: ["CentOS", "Ubuntu", "Amazon"]
+common_install_docker: True
 mysql_root_password: "123456"
 docker_applications: 
   - phpmyadmin
