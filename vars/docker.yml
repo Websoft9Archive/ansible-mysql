@@ -13,3 +13,5 @@ init_docker:
     compose_path: "/data/db/mysql{{mysql_version}}/docker-compose.yml"
     compose_commands:
       - sudo sed -i "s/123456/$new_password/g" /data/db/mysql{{mysql_version}}/docker-compose.yml
+    volumes:
+      - /data/db/mysql{{mysql_version}}/data
