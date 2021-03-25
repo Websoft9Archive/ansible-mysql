@@ -8,4 +8,4 @@ init_db:
     admin: root
     password: "123456"  
     config_paths:
-      - sudo sed -i "s/123456/$new_password/g" /data/db/mysql{{mysql_version}}/docker-compose.yml
+      - /data/db/mysql{{mysql_version}}/docker-compose.yml
