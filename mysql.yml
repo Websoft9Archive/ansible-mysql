@@ -67,6 +67,8 @@
   pre_tasks:
     - include_vars: vars/docker.yml
       when: mysql_docker
+    - include_vars: vars/main.yml
+      when: not mysql_docker
     - debug: 
         msg: MySql{{mysql_version}} will be install, Container version of MySQL is {{mysql_docker}}
 
