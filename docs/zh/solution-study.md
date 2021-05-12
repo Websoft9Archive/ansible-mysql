@@ -60,6 +60,17 @@ MySQL 开发无疑博大精深，在我们工作过程中，最常见的要点�
 
 ### 字符集
 
+MySQL 技术体系中分为：
+
+* 字符集（character set），用于存储字符串的方式，例如 utf8mb4
+* 排序字符集（collation），用于定义了比较字符串的方式，例如 utf8mb4-general_ci
+
+可见排序字符集的前缀是字符集。
+
+Mysql8.0以上安装完默认character_set_server 为utf8mb4
+
+
+
 ### 视图
 
 ### 存储过程
