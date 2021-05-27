@@ -16,7 +16,7 @@
     - name: 'mysql_version_selection'
       prompt: "\nPlease choose the number for MySQL version [ 1/2/3/4] \n\n
       1: MySQL5.5(only for CentOS7.x, AmazonLinux)\n
-      2: MySQL5.6(only for CentOS7.x, AmazonLinux, Ubuntu16.04, Docker)\n
+      2: MySQL5.6(only for CentOS7.x, AmazonLinux, Docker)\n
       3: MySQL5.7(Support all)\n
       4: MySQL8.0(Support all)\n"
       private: no
