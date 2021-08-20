@@ -62,7 +62,7 @@ This program provided by Websoft9 contains a series of software with separate co
 
 #### How to install and view the latest release?
 
-This repository install way is Package isntallation, you can  view the version from [Official URL](https://dev.mysql.com/doc/).  
+This repository install way is Package isntallation, you can  view the version from [Official URL](https://dev.mysql.com/doc/relnotes/mysql/).  
 We will check [Release version](https://github.com/Websoft9/ansible-mysql/releases) regularly. Update and test this project to ensure that users can successfully install the required version of MySQL.
 
 #### Can I run this repository on Ansible Tower? 
