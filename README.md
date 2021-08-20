@@ -19,7 +19,7 @@ System Requirement to install this repository are as following：
 | Private Cloud     | KVM, VMware, VirtualBox, OpenStack    | Optional                 |
 | Server Configuration | vCPU no less than 1 core, Memory no less than 1 GIB, Storage no less than 20 GB, Swap no less than 2GB |Bandwidth no less than 100M|
 
-To learn more information, please view [Installation & Configuration](https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html).
+To learn more information, please view [Installation & Configuration](https://www.mysql.com/support/supportedplatforms/database.html).
 
 ## Ecosystem
 
