@@ -8,7 +8,7 @@
   "requirements_Bandwidth": "100",
   "requirements_disk": "20",
   "requirements_swap": "2",
-  "requirements_configure_url": "https://dev.mysql.com/doc/refman/8.0/en/linux-installation.html",
+  "requirements_configure_url": "https://www.mysql.com/support/supportedplatforms/database.html",
   "components": "MySQL, phpMyAdmin on Docker",
   "install_way": {
     "en": "Package isntallation",
