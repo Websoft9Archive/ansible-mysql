@@ -35,6 +35,47 @@
 2. 查看反馈的信息中MySQL版本
    ![](http://libs.websoft9.com/Websoft9/DocsPicture/en/mysql/mysql01.png)
 
+### MySQL 主从配置
+
+如果您购买了两台MySQL主从服务器，按照如下步骤可实现所有库、表等数据同步：
+
+1. 使用SSH工具远程登录到MySLQ master 服务器，运行命令查看脚本帮助
+   ~~~
+   cd /data/config
+   [root@iZbp1914ntfd3d0jadprbyZ tools]# bash master.sh -h
+
+     -h, --help      show help information
+     -M, --master-root-password  master mysql root password, Required parameter
+     -u, --slave-username   slave mysql username, Required parameter
+     -s, --slave-password   slave mysql password, Required parameter
+     example:
+       bash master.sh -M 123456 -u slave -s 123456
+   
+   ~~~
+
+2. 根据上面的帮助命令，将-M的参数"123456"替换成数据库root密码([不知道密码？](/zh/stack-accounts.md#mysql))
+   ```
+   [root@iZbp1914ntfd3d0jadprbyZ tools]# bash master.sh -M T9M9bouSVAR9s7m -u slave -s 123456
+   master mysql root password is: T9M9bouSVAR9s7m
+   slave mysql username is: slave
+   slave mysql password is: 123456
+   Get parameters success !
+   mysql config file update success !
+   mysql: [Warning] Using a password on the command line interface can be insecure.
+   mysql: [Warning] Using a password on the command line interface can be insecure.
+   Create mysql user and set permissive success !
+   mysql: [Warning] Using a password on the command line interface can be insecure.
+   mysql: [Warning] Using a password on the command line interface can be insecure.
+   mysql: [Warning] Using a password on the command line interface can be insecure.
+   master log file is: mysql-bin.000008
+   master log pos is: 817
+   --------------------------------------------
+   Congratulations, run complete.
+   --------------------------------------------
+   [root@iZbp1914ntfd3d0jadprbyZ tools]# 
+
+   ```
+   
 ### phpMyAdmin 连接 MySQL
 
 如果部署方案中包含 phpMyAdmin 等图形化工具，使用就更加便捷方便：
