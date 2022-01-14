@@ -41,38 +41,83 @@
 
 1. 使用SSH工具远程登录到MySLQ master 服务器，运行命令查看脚本帮助
    ~~~
-   cd /data/config
-   [root@iZbp1914ntfd3d0jadprbyZ tools]# bash master.sh -h
+      cd /data/config
+      [root@iZbp1914ntfd3d0jadprbyZ tools]# bash master.sh -h
 
-     -h, --help      show help information
-     -M, --master-root-password  master mysql root password, Required parameter
-     -u, --slave-username   slave mysql username, Required parameter
-     -s, --slave-password   slave mysql password, Required parameter
-     example:
-       bash master.sh -M 123456 -u slave -s 123456
+        -h, --help      show help information
+        -M, --master-root-password  master mysql root password, Required parameter
+        -u, --slave-username   slave mysql username, Required parameter
+        -s, --slave-password   slave mysql password, Required parameter
+        example:
+          bash master.sh -M 123456 -u slave -s 123456
    
    ~~~
 
 2. 根据上面的帮助命令，将-M的参数"123456"替换成数据库root密码([不知道密码？](/zh/stack-accounts.md#mysql))
    ```
-   [root@iZbp1914ntfd3d0jadprbyZ tools]# bash master.sh -M T9M9bouSVAR9s7m -u slave -s 123456
-   master mysql root password is: T9M9bouSVAR9s7m
-   slave mysql username is: slave
-   slave mysql password is: 123456
-   Get parameters success !
-   mysql config file update success !
-   mysql: [Warning] Using a password on the command line interface can be insecure.
-   mysql: [Warning] Using a password on the command line interface can be insecure.
-   Create mysql user and set permissive success !
-   mysql: [Warning] Using a password on the command line interface can be insecure.
-   mysql: [Warning] Using a password on the command line interface can be insecure.
-   mysql: [Warning] Using a password on the command line interface can be insecure.
-   master log file is: mysql-bin.000008
-   master log pos is: 817
-   --------------------------------------------
-   Congratulations, run complete.
-   --------------------------------------------
-   [root@iZbp1914ntfd3d0jadprbyZ tools]# 
+      [root@iZbp1914ntfd3d0jadprbyZ tools]# bash master.sh -M T9M9bouSVAR9s7m -u slave -s 123456
+      master mysql root password is: T9M9bouSVAR9s7m
+      slave mysql username is: slave
+      slave mysql password is: 123456
+      Get parameters success !
+      mysql config file update success !
+      mysql: [Warning] Using a password on the command line interface can be insecure.
+      mysql: [Warning] Using a password on the command line interface can be insecure.
+      Create mysql user and set permissive success !
+      mysql: [Warning] Using a password on the command line interface can be insecure.
+      mysql: [Warning] Using a password on the command line interface can be insecure.
+      mysql: [Warning] Using a password on the command line interface can be insecure.
+      master log file is: mysql-bin.000008
+      master log pos is: 817
+      --------------------------------------------
+      Congratulations, run complete.
+      --------------------------------------------
+      [root@iZbp1914ntfd3d0jadprbyZ tools]# 
+
+   ```
+   
+3. 使用SSH工具远程登录到MySLQ slave 服务器，运行命令查看脚本帮助
+   ```
+      cd /data/config
+      [root@iZbp1dh5vfhy63dps7qt5aZ tools]# bash slave.sh -h
+
+        -h, --help      show help information
+        -i, --id        slave server id, Required parameters
+        -H, --host      master host ip, Required parameters
+        -u, --slave-username   slave mysql username, Required parameter
+        -s, --slave-password   slave mysql password, Required parameter
+        -S, --slave-root-password   slave mysql root password, Required parameter
+        -f, --master-logfile   master binlog logs filename, Required parameter, obtain the value from the master.sh result
+        -p, --master-logpos    master binlog logs pos value, obtain the value from the master.sh result
+        example:
+          bash slave.sh -i 2 -H 192.168.0.1 -u slave -s 123456 -S 123456 -f mysql-bin.000001 -p 214
+   
+   ```
+   
+4. 根据上面的帮助命令，将-H的参数"192.168.0.1"替换成master服务器的内网地址，将-S的参数"123456"替换成slave服务器的数据库root密码([不知道密码？](/zh/stack-accounts.md#mysql))，将-f的参数"mysql-bin.000001"替换成master脚本执行后的结果[master log file is]，将将-p的参数"214"替换成master脚本执行后的结果[master log pos]。
+   ```
+      [root@iZbp1dh5vfhy63dps7qt5aZ tools]# bash slave.sh -i 2 -H 172.16.232.184 -u slave -s 123456 -S 1FjTLwlSZz4c2zp -f mysql-bin.000008 -p 817
+      slave slave server id is: 2
+      master local host is: 172.16.232.184
+      slave mysql username is: slave
+      slave mysql password is: 123456
+      slave mysql root password is: 1FjTLwlSZz4c2zp
+      master log file is: mysql-bin.000008
+      master log pos is: 817
+      Get parameters success !
+      MySql config file update success !
+      mysql: [Warning] Using a password on the command line interface can be insecure.
+      mysql: [Warning] Using a password on the command line interface can be insecure.
+      mysql: [Warning] Using a password on the command line interface can be insecure.
+      MySql configuration complete
+      mysql: [Warning] Using a password on the command line interface can be insecure.
+      mysql: [Warning] Using a password on the command line interface can be insecure.
+      Slave_IO_Running: Yes
+      Slave_SQL_Running: Yes Slave_SQL_Running_State: Replica has read all relay log; waiting for more updates
+      --------------------------------------------
+      Congratulations, run complete.
+      --------------------------------------------
+      [root@iZbp1dh5vfhy63dps7qt5aZ tools]# 
 
    ```
    
