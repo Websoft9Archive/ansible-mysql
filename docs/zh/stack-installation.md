@@ -39,7 +39,7 @@
 
 如果您购买了两台MySQL主从服务器，按照如下步骤可实现所有库、表等数据同步：
 
-1. 使用SSH工具远程登录到MySLQ master 服务器，运行命令查看脚本帮助
+1. 使用SSH工具远程登录到MySQL master 服务器，运行命令查看脚本帮助
    ~~~
       cd /data/config
       [root@iZbp1914ntfd3d0jadprbyZ tools]# bash master.sh -h
@@ -76,7 +76,7 @@
 
    ```
    
-3. 使用SSH工具远程登录到MySLQ slave 服务器，运行命令查看脚本帮助
+3. 使用SSH工具远程登录到MySQL slave 服务器，运行命令查看脚本帮助
    ```
       cd /data/config
       [root@iZbp1dh5vfhy63dps7qt5aZ tools]# bash slave.sh -h
