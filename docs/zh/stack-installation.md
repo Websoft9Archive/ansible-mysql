@@ -41,8 +41,8 @@
 
 1. 使用SSH工具远程登录到MySQL master 服务器，运行命令查看脚本帮助
    ~~~
-      cd /data/config
-      [root@iZbp1914ntfd3d0jadprbyZ tools]# bash master.sh -h
+      [root@iZbp1914ntfd3d0jadprbyZ tools]# cd /data/config
+      [root@iZbp1914ntfd3d0jadprbyZ config]# bash master.sh -h
 
         -h, --help      show help information
         -M, --master-root-password  master mysql root password, Required parameter
@@ -55,7 +55,7 @@
 
 2. 根据上面的帮助命令，将-M的参数"123456"替换成数据库root密码([不知道密码？](/zh/stack-accounts.md#mysql))
    ```
-      [root@iZbp1914ntfd3d0jadprbyZ tools]# bash master.sh -M T9M9bouSVAR9s7m -u slave -s 123456
+      [root@iZbp1914ntfd3d0jadprbyZ config]# bash master.sh -M T9M9bouSVAR9s7m -u slave -s 123456
       master mysql root password is: T9M9bouSVAR9s7m
       slave mysql username is: slave
       slave mysql password is: 123456
@@ -78,8 +78,8 @@
    
 3. 使用SSH工具远程登录到MySQL slave 服务器，运行命令查看脚本帮助
    ```
-      cd /data/config
-      [root@iZbp1dh5vfhy63dps7qt5aZ tools]# bash slave.sh -h
+      [root@iZbp1dh5vfhy63dps7qt5aZ tools]# cd /data/config
+      [root@iZbp1dh5vfhy63dps7qt5aZ config]# bash slave.sh -h
 
         -h, --help      show help information
         -i, --id        slave server id, Required parameters
@@ -96,7 +96,7 @@
    
 4. 根据上面的帮助命令，将-H的参数"192.168.0.1"替换成master服务器的内网地址，将-S的参数"123456"替换成slave服务器的数据库root密码([不知道密码？](/zh/stack-accounts.md#mysql))，将-f的参数"mysql-bin.000001"替换成master脚本执行后的结果[master log file is]，将将-p的参数"214"替换成master脚本执行后的结果[master log pos]。
    ```
-      [root@iZbp1dh5vfhy63dps7qt5aZ tools]# bash slave.sh -i 2 -H 172.16.232.184 -u slave -s 123456 -S 1FjTLwlSZz4c2zp -f mysql-bin.000008 -p 817
+      [root@iZbp1dh5vfhy63dps7qt5aZ config]# bash slave.sh -i 2 -H 172.16.232.184 -u slave -s 123456 -S 1FjTLwlSZz4c2zp -f mysql-bin.000008 -p 817
       slave slave server id is: 2
       master local host is: 172.16.232.184
       slave mysql username is: slave
