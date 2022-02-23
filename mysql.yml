@@ -8,8 +8,8 @@
   vars_prompt:
     - name: 'mysql_type_selection'
       prompt: "\nPlease Select the type of database to install [ 1/2] \n\n
-      1: Docker install\n
-      2: Package install\n"
+      1: Package install\n
+      2: Docker install\n"
       private: no
       default: 1
 
@@ -45,10 +45,10 @@
     mysql_version: "{{mysql_version_select[mysql_version_selection]}}" 
 
     mysql_type_select:
-      '1': True
-      'y': True
-      '2': False
-      'n': False
+      '1': False
+      'y': False
+      '2': True
+      'n': True
     mysql_docker: "{{mysql_type_select[mysql_type_selection]}}"
 
     phpmyadmin_select:
